@@ -19,12 +19,17 @@ void expect_equivalent_to_std(Container v, int n, Compare comp = {}) {
     auto v_std     = v;
     auto v_at_most = v;
     auto size      = std::distance(v_std.begin(), v_std.end());
-    auto k         = std::min(static_cast<std::ptrdiff_t>(std::max(0, n)), size);
+    auto k         = std::max(static_cast<std::ptrdiff_t>(0), static_cast<std::ptrdiff_t>(n));
 
-    std::partial_sort(v_std.begin(), v_std.begin() + k, v_std.end(), comp);
-    partial_sort_at_most(v_at_most.begin(), v_at_most.end(), n, comp);
-
-    EXPECT_EQ(v_at_most, v_std);
+    if (k == 0) {
+        partial_sort_at_most(v_at_most.begin(), v_at_most.end(), n, comp);
+        EXPECT_EQ(v_at_most, v_std);
+    } else {
+        k = std::min(k, size);
+        std::partial_sort(v_std.begin(), v_std.begin() + k, v_std.end(), comp);
+        partial_sort_at_most(v_at_most.begin(), v_at_most.end(), n, comp);
+        EXPECT_EQ(v_at_most, v_std);
+    }
 }
 
 // Boundary Clamping
