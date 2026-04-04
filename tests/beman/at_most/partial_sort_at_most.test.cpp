@@ -9,11 +9,6 @@
 
 using namespace beman::at_most;
 
-/**
- * @brief Helper for testing.
- * Compares our beman::at_most::partial_sort_at_most output with
- * a manual call to std::partial_sort.
- */
 template <typename Container, typename Compare = std::less<>>
 void expect_equivalent_to_std(Container v, int n, Compare comp = {}) {
     auto v_std     = v;
