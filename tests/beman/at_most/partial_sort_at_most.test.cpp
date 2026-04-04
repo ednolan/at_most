@@ -11,19 +11,19 @@ using namespace beman::at_most;
 
 /**
  * @brief Helper for testing.
- * Compares our beman::at_most::partial_sort_at_most output with 
+ * Compares our beman::at_most::partial_sort_at_most output with
  * a manual call to std::partial_sort.
  */
 template <typename Container, typename Compare = std::less<>>
 void expect_equivalent_to_std(Container v, int n, Compare comp = {}) {
-    auto v_std = v;
+    auto v_std     = v;
     auto v_at_most = v;
-    auto size = std::distance(v_std.begin(), v_std.end());
-    auto k = std::min(static_cast<std::ptrdiff_t>(std::max(0, n)), size);
-    
+    auto size      = std::distance(v_std.begin(), v_std.end());
+    auto k         = std::min(static_cast<std::ptrdiff_t>(std::max(0, n)), size);
+
     std::partial_sort(v_std.begin(), v_std.begin() + k, v_std.end(), comp);
     partial_sort_at_most(v_at_most.begin(), v_at_most.end(), n, comp);
-    
+
     EXPECT_EQ(v_at_most, v_std);
 }
 
@@ -52,13 +52,15 @@ TEST(PartialSortAtMostTest, ClampingAtSize) {
 // Iterator Variety
 
 TEST(PartialSortAtMostTest, RawPointerArray) {
-    std::vector<int> v = {10, 5, 2, 8, 1};
-    int arr[] = {10, 5, 2, 8, 1};
-    
+    std::vector<int> v     = {10, 5, 2, 8, 1};
+    int              arr[] = {10, 5, 2, 8, 1};
+
     partial_sort_at_most(arr, arr + 5, 2);
     partial_sort_at_most(v.begin(), v.end(), 2);
 
-    for(int i=0; i<5; ++i) { EXPECT_EQ(arr[i], v[i]); }
+    for (int i = 0; i < 5; ++i) {
+        EXPECT_EQ(arr[i], v[i]);
+    }
 }
 
 TEST(PartialSortAtMostTest, DequeVariety) {

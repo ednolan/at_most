@@ -9,7 +9,7 @@
 namespace beman::at_most {
 
 /**
- * @brief Rearranges the elements in the range [first, last), such that the first min(n, last - first) elements 
+ * @brief Rearranges the elements in the range [first, last), such that the first min(n, last - first) elements
  * are sorted in ascending order and the remaining elements are left in an undefined order.
  *
  * Equivalent to:
@@ -19,16 +19,16 @@ namespace beman::at_most {
  * @endcode
  */
 template <typename RandomAccessIterator, typename Compare = std::less<>>
-constexpr void partial_sort_at_most(RandomAccessIterator first,
-                                    RandomAccessIterator last,
+constexpr void partial_sort_at_most(RandomAccessIterator                                                 first,
+                                    RandomAccessIterator                                                 last,
                                     typename std::iterator_traits<RandomAccessIterator>::difference_type n,
-                                    Compare comp = {}) {
+                                    Compare                                                              comp = {}) {
     if (n <= 0) {
         return;
     }
     auto dist = std::distance(first, last);
-    auto k = std::min(n, dist);
-    auto mid = std::next(first, k);
+    auto k    = std::min(n, dist);
+    auto mid  = std::next(first, k);
     std::ranges::partial_sort(std::ranges::subrange(first, last), mid, comp);
 }
 
