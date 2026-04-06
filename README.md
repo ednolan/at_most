@@ -1,4 +1,4 @@
-# beman.at_most: Safe versions of partial_sort and get_nth_element (P3735)
+# beman.at_most: Safe versions of partial_sort and get_nth_element
 
 <!--
 SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
@@ -11,7 +11,7 @@ SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 This can be used as a template for those intending to write Beman libraries.
 It may also find use as a minimal and modern  C++ project structure.
 
-**Implements**: `std::identity` proposed in [Standard Library Concepts (P3735R1)](https://wg21.link/P3735R1).
+**Implements**: Safe versions of `std::partial_sort` and `std::nth_element` proposed in [P3735R1](https://wg21.link/P3735R1).
 
 **Status**: [Under development and not yet ready for production use.](https://github.com/bemanproject/beman/blob/main/docs/beman_library_maturity_model.md#under-development-and-not-yet-ready-for-production-use)
 
