@@ -29,9 +29,9 @@ constexpr void partial_sort_at_most(RandomAccessIterator                        
 
 namespace ranges {
 
-namespace __partial_sort_at_most {
+namespace detail_partial_sort_at_most {
 
-struct __fn {
+struct fn {
     template <std::random_access_iterator I,
               std::sentinel_for<I>        S,
               typename Comp = std::ranges::less,
@@ -51,9 +51,9 @@ struct __fn {
     }
 };
 
-} // namespace __partial_sort_at_most
+} // namespace detail_partial_sort_at_most
 
-inline constexpr __partial_sort_at_most::__fn partial_sort_at_most{};
+inline constexpr detail_partial_sort_at_most::fn partial_sort_at_most{};
 
 } // namespace ranges
 
