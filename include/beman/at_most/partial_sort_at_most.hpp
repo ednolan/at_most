@@ -3,6 +3,10 @@
 #ifndef BEMAN_AT_MOST_PARTIAL_SORT_AT_MOST_HPP
 #define BEMAN_AT_MOST_PARTIAL_SORT_AT_MOST_HPP
 
+#if __cplusplus < 202002L
+#error "beman.at_most requires at least C++20."
+#endif
+
 #include <algorithm>
 #include <iterator>
 #include <ranges>
